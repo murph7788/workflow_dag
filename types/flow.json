@@ -1,0 +1,92 @@
+{
+  "flowName": "algo_flow",
+  "version": 1,
+  "status": 1,
+  "content": {
+    "process": {
+      "java": [
+        {
+          "no": 1,
+          "id": "task_java",
+          "clazz": "com.xxx.ai.delegate.Feature",
+          "field": [
+            {
+              "type": "api_input",
+              "key": "userId",
+              "alias": "user_id"
+            }
+          ],
+          "transition": [
+            {
+              "to": 2
+            }
+          ]
+        },
+        {
+          "no": 2,
+          "id": "test_java",
+          "clazz": "com.xxx.ai.delegate.JavaProcess",
+          "field": [
+            {
+              "type": "node_output",
+              "key": "out_1",
+              "alias": "3_test_node.out_1"
+            }
+          ],
+          "async": false,
+          "transition": [
+            {
+              "to": 3
+            }
+          ]
+        }
+      ],
+      "split": [
+        {
+          "no": 5,
+          "id": "split",
+          "clazz": null,
+          "transition": [
+            {
+              "expr": "process_type==1",
+              "to": 4
+            },
+            {
+              "to": 5
+            }
+          ],
+          "field": [
+            {
+              "type": "node_output",
+              "alias": "2_test_java.process_type",
+              "key": "process_type"
+            }
+          ]
+        }
+      ],
+      "fork": [],
+      "join": [],
+      "start": {
+        "no": 0,
+        "id": "start",
+        "transition": [
+          {
+            "to": 1
+          }
+        ]
+      },
+      "end": {
+        "no": 11,
+        "id": "end",
+        "transition": [],
+        "field": [
+          {
+            "type": "node_output",
+            "alias": "3_test_java.result;4_test_node.result_1",
+            "key": "result"
+          }
+        ]
+      }
+    }
+  }
+}
